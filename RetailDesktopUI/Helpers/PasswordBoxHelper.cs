@@ -19,9 +19,7 @@ namespace RetailDesktopUI.Helpers
 
         public static string GetBoundPassword(DependencyObject d)
         {
-            var box = d as PasswordBox;
-
-            if (box != null)
+            if (d is PasswordBox box)
             {
                 // this funny little dance here ensures that we've hooked the
                 // PasswordChanged event once, and only once.
