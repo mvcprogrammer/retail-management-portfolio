@@ -4,17 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using RetailDesktopUI.EventModels;
 
 namespace RetailDesktopUI.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IHandle<LogOnEvent>
     {
-        private readonly LoginViewModel _loginVM;
-        public ShellViewModel(LoginViewModel loginVM)
+        private readonly IEventAggregator _events;
+        private readonly SalesViewModel _salesVM;
+        private readonly SimpleContainer _container;
+        public ShellViewModel(IEventAggregator events, SalesViewModel salesVM, SimpleContainer container)
         {
-            _loginVM = loginVM;
+            _events = events;
+            _salesVM = salesVM;
+            _container = container;
 
-            ActivateItem(_loginVM);
+            _events.Subscribe(this);
+
+            ActivateItem(_container.GetInstance<LoginViewModel>());
+        }
+
+        public void Handle(LogOnEvent message)
+        {
+            ActivateItem(_salesVM);
         }
     }
 }
