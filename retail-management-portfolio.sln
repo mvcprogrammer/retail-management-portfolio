@@ -9,6 +9,10 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RetailData", "RetailData\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailDesktopUI", "RetailDesktopUI\RetailDesktopUI.csproj", "{88839063-4F0D-471B-9483-1ACB0834318A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailDataManager.Library", "RetailDataManager.Library\RetailDataManager.Library.csproj", "{3F20E32A-8F13-415F-9A5B-AEFD91A7E761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailDesktopUI.Library", "RetailDesktopUI.Library\RetailDesktopUI.Library.csproj", "{A3932C55-6048-4265-AC40-E742A8CC23B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{88839063-4F0D-471B-9483-1ACB0834318A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88839063-4F0D-471B-9483-1ACB0834318A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88839063-4F0D-471B-9483-1ACB0834318A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F20E32A-8F13-415F-9A5B-AEFD91A7E761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F20E32A-8F13-415F-9A5B-AEFD91A7E761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F20E32A-8F13-415F-9A5B-AEFD91A7E761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F20E32A-8F13-415F-9A5B-AEFD91A7E761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3932C55-6048-4265-AC40-E742A8CC23B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3932C55-6048-4265-AC40-E742A8CC23B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3932C55-6048-4265-AC40-E742A8CC23B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3932C55-6048-4265-AC40-E742A8CC23B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

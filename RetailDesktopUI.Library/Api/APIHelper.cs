@@ -1,4 +1,5 @@
 ﻿using RetailDataManager.Models;
+using RetailDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,15 +8,17 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RetailDesktopUI.Helpers
+namespace RetailDesktopUI.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
         private HttpClient _apiClient;
+        private ILoggedInUserModel _loggedInUser;
 
-        public APIHelper()
+        public APIHelper(ILoggedInUserModel loggedInUser)
         {
             InitializeCilent();
+            _loggedInUser = loggedInUser;
         }
 
         private void InitializeCilent()
@@ -49,6 +52,34 @@ namespace RetailDesktopUI.Helpers
                     throw new Exception(response.ReasonPhrase);
                 }
             }
+        }
+
+        public async Task GetLoggedInUserInfo(string token)
+        {
+            _apiClient.DefaultRequestHeaders.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            _apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            using (HttpResponseMessage response = await _apiClient.GetAsync("/api/User"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<LoggedInUserModel>();
+
+                    _loggedInUser.CreateDate = result.CreateDate;
+                    _loggedInUser.EmailAddress = result.EmailAddress;
+                    _loggedInUser.FirstName = result.FirstName;
+                    _loggedInUser.Id = result.Id;
+                    _loggedInUser.LastName = result.LastName;
+                    _loggedInUser.Token = token;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using Caliburn.Micro;
 using RetailDesktopUI.EventModels;
-using RetailDesktopUI.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using RetailDesktopUI.Library.Api;
 
 namespace RetailDesktopUI.ViewModels
 {
@@ -51,6 +48,7 @@ namespace RetailDesktopUI.ViewModels
             try
             {
                 var result = await _apiHelper.Authenticate(UserName, Password);
+                await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
 
                 _eventAggregator.PublishOnUIThread(new LogOnEvent());
             }
