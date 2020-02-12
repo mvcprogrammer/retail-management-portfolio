@@ -3,9 +3,7 @@ using RetailDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RetailDesktopUI.Library.Api
@@ -19,6 +17,11 @@ namespace RetailDesktopUI.Library.Api
         {
             InitializeCilent();
             _loggedInUser = loggedInUser;
+        }
+
+        public HttpClient ApiCLient 
+        {
+            get => _apiClient;
         }
 
         private void InitializeCilent()
@@ -79,7 +82,6 @@ namespace RetailDesktopUI.Library.Api
                     throw new Exception(response.ReasonPhrase);
                 }
             }
-
         }
     }
 }

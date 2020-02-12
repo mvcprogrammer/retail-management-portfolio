@@ -28,7 +28,9 @@ namespace RetailDesktopUI
 
         protected override void Configure()
         {
-            _simpleContainer.Instance(_simpleContainer);
+            _simpleContainer.Instance(_simpleContainer)
+            .PerRequest<IProductEndpoint, ProductEndpoint>();
+
             _simpleContainer
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
